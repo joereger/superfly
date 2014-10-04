@@ -13,13 +13,13 @@ app.get('/', function(request, response) {
   response.send('Hello Superfly!')
 })
 
-app.post('/test-webhook',function(req,res) {
+app.post('/test-webhook', function(request,response) {
 
-    console.log('Request.body: ' + req.body);
-    console.log('Request.token: ' + req.token);
-    console.log('Request.team_id: ' + req.team_id);
+    console.log('Request.body: ' + request.body);
+    console.log('Request.token: ' + request.token);
+    console.log('Request.team_id: ' + request.team_id);
 
-    var reply = slack.respond(req,function(hook) {
+    var reply = slack.respond(request,function(hook) {
 
         return {
             text: 'Booyah, ' + hook.user_name,
@@ -28,9 +28,9 @@ app.post('/test-webhook',function(req,res) {
 
     });
 
-    console.log('Response.body: '+res.body);
+    console.log('Response.body: '+response.body);
 
-    res.json(reply);
+    response.json(reply);
 
 });
 
