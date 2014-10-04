@@ -3,7 +3,9 @@ var app = express();
 
 
 var Slack = require('node-slack');
-var slack = new Slack('springbot.slack.com','T2kiFFhCfuaYSfNgIteabbs8');
+var token = 'T2kiFFhCfuaYSfNgIteabbs8';
+var domain = 'springbot.slack.com';
+var slack = new Slack(domain, token);
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
