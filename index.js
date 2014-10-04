@@ -15,9 +15,9 @@ app.get('/', function(request, response) {
 
 app.post('/test-webhook',function(req,res) {
 
-    console.log('Connection from: ' + req.connection.remoteAddress);
+    console.log('Request.body: ' + req.body);
 
-    var reply = slack.respond(req,function(hook) {
+    var reply = slack.respond(req.body,function(hook) {
 
         return {
             text: 'Booyah, ' + hook.user_name,
@@ -26,8 +26,10 @@ app.post('/test-webhook',function(req,res) {
 
     });
 
+    console.log('Response.body: '+res.body);
+
     res.json(reply);
-    res.end();
+
 });
 
 app.listen(app.get('port'), function() {
