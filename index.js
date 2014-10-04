@@ -5,7 +5,7 @@ var app = express();
 var Slack = require('node-slack');
 var token = 'T2kiFFhCfuaYSfNgIteabbs8';
 var domain = 'springbot.slack.com';
-var slack = new Slack(domain, token);
+
 
 app.set('port', (process.env.PORT || 5000))
 app.use(express.static(__dirname + '/public'))
@@ -15,6 +15,8 @@ app.get('/', function(request, response) {
 })
 
 app.post('/test-webhook',function(req,res) {
+
+    var slack = new Slack(domain, token);
 
     var reply = slack.respond(req.body,function(hook) {
 
