@@ -16,8 +16,10 @@ app.get('/', function(request, response) {
 app.post('/test-webhook',function(req,res) {
 
     console.log('Request.body: ' + req.body);
+    console.log('Request.token: ' + req.token);
+    console.log('Request.team_id: ' + req.team_id);
 
-    var reply = slack.respond(req.body,function(hook) {
+    var reply = slack.respond(req,function(hook) {
 
         return {
             text: 'Booyah, ' + hook.user_name,
