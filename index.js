@@ -12,7 +12,7 @@ app.get('/', function(request, response) {
   response.send('Hello Superfly!')
 })
 
-app.post('/slack-webhook',function(req,res) {
+app.post('/test-webhook',function(req,res) {
 
     var reply = slack.respond(req.body,function(hook) {
 
