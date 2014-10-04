@@ -1,0 +1,7 @@
+{
+  "name": "Superfly",
+  "description": "A Node app for super things that fly... doi.",
+  "repository": "https://github.com/springbot/superfly.git",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "static"]
+}
