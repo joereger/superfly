@@ -2,7 +2,7 @@ var express = require('express')
 var app = express();
 
 var token = 'T2kiFFhCfuaYSfNgIteabbs8';
-var domain = 'springbot.slack.com';
+var domain = 'springbot';
 var Slack = require('node-slack');
 var slack = new Slack(domain, token);
 
@@ -27,7 +27,7 @@ app.post('/test-webhook',function(req,res) {
     });
 
     res.json(reply);
-
+    res.end();
 });
 
 app.listen(app.get('port'), function() {
