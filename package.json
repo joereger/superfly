@@ -9,7 +9,8 @@
   "dependencies": {
     "express": "~4.9.x",
     "body-parser": "1.x.x",
-    "node-slack": "0.0.5"
+    "node-slack": "0.0.5",
+    "mongoose": "3.8.x"
   },
   "engines": {
     "node": "0.10.x"
