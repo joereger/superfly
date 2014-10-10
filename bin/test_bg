@@ -7,10 +7,13 @@ function test_bg() {
 
   console.log('Hello from a scheduled task');
 
-  mongo.SlackMessage.find(function (err, slack_messages) {
-    if (err) return console.error(err);
-    console.log(slack_messages)
-  })
+  var formattedDate = new Date().dateFormat('mmm dd, yyyy h:mm TT');
+
+  slack.slack_out.send({
+      text: 'crikey, it's ' + formattedDate,
+      channel: '#test',
+      username: 'Superfly',
+  });
 
   console.log('Good bye from a scheduled task');
 
