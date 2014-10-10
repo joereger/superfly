@@ -1,6 +1,6 @@
 #! /app/bin/node
-function sayHello() {
+function test_bg() {
   console.log('Hello from a scheduled task');
 }
-sayHello();
+test_bg();
 exit();
