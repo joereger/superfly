@@ -1,0 +1,6 @@
+#! /app/bin/node
+function sayHello() {
+  console.log('Hello from a scheduled task');
+}
+sayHello();
+exit();
