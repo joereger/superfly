@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded() );
 
-//mongo object
+//mongo object, sets up models & exports them
 mongo = require("./conf/mongo.js");
 
 //mount the routes
