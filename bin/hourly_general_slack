@@ -5,10 +5,8 @@ var mongo = require("../conf/mongo.js");
 
 function hourly_general_slack() {
 
-    var formattedDate = new Date().dateFormat('mmm dd, yyyy h:mm TT');
-
     slack.slack_out.send({
-        text: 'in yo face, it is ' + formattedDate,
+        text: 'in yo face, it is ' + new Date(),
         channel: '#test',
         username: 'Superfly',
     });
