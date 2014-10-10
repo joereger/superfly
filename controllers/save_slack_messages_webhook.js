@@ -14,7 +14,7 @@ router.post('/', function(req, res) {
     var reply = slack_in.respond(req.body,function(hook) {
         if (hook.user_name != 'slackbot'){
 
-            var slack_message = new SlackMessage ({
+            var slack_message = new mongo.SlackMessage ({
                 datetime: new Date(),
                 channel_name: hook.channel_name,
                 channel_id: hook.channel_id,
