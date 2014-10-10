@@ -1,21 +1,8 @@
 #! /app/vendor/node/bin/node
 
-var slack = require("../conf/slack.js");
-var mongo = require("../conf/mongo.js");
-
 function test_bg() {
 
-  console.log('Hello from a scheduled task');
-
-  var formattedDate = new Date().dateFormat('mmm dd, yyyy h:mm TT');
-
-  slack.slack_out.send({
-      text: 'crikey, it's ' + formattedDate,
-      channel: '#test',
-      username: 'Superfly',
-  });
-
-  console.log('Good bye from a scheduled task');
+  console.log('Hello from a background task');
 
 }
 test_bg();

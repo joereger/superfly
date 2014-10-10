@@ -1,0 +1,18 @@
+#! /app/vendor/node/bin/node
+
+var slack = require("../conf/slack.js");
+var mongo = require("../conf/mongo.js");
+
+function hourly_general_slack() {
+
+    var formattedDate = new Date().dateFormat('mmm dd, yyyy h:mm TT');
+
+    slack.slack_out.send({
+        text: 'in yo face, it is ' + formattedDate,
+        channel: '#test',
+        username: 'Superfly',
+    });
+
+}
+hourly_general_slack();
+
