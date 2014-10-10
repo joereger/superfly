@@ -11,7 +11,6 @@ var slack_out = new Slack(domain, token_outbound_to_slack);
 
 router.post('/', function(req, res) {
 
-
     var reply = slack_in.respond(req.body,function(hook) {
         if (hook.user_name != 'slackbot'){
 
