@@ -3,4 +3,3 @@ function test_bg() {
   console.log('Hello from a scheduled task');
 }
 test_bg();
-exit();
