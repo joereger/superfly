@@ -2,15 +2,26 @@
 
 var slack = require("../conf/slack.js");
 var mongo = require("../conf/mongo.js");
+var moment = require('moment');
 
 function hourly_general_slack() {
+    top_slackers();
+}
+hourly_general_slack();
+
+
+function top_slackers(){
+
+    var start_date =  moment().subtract(1, 'days').calendar();
+    var end_date = moment().calendar();
+
+    var countQuery = mongo.SlackMessage.where({"datetime": {'$gte': start_date, '$lte': end_date}}).count();
 
     slack.slack_out.send({
-        text: 'in yo face, it is ' + new Date(),
+        text: '' + countQuery + ' original slacks in the last 24 hours.',
         channel: '#test',
         username: 'Superfly',
     });
 
 }
-hourly_general_slack();
 
