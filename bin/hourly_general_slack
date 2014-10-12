@@ -20,7 +20,7 @@ function top_slackers(){
     Async.series([
         function(callback){
             console.log('about to run the count');
-            mongo.SlackMessage.count({"datetime": {'$gte': start_date, '$lte': end_date}}, function(err, result){
+            mongo.SlackMessage.count({datetime: {'$gte': start_date, '$lte': end_date}}, function(err, result){
                 console.log( "step 1 result = ", result );
                 count = result;
                 callback(null, 'one');
