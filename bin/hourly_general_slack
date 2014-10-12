@@ -13,9 +13,12 @@ hourly_general_slack();
 
 function top_slackers(){
 
-    var start_date =  moment(new Date()).subtract(1, 'd').toDate();
+    var MS_PER_MINUTE = 60000;
+    var start_date = new Date(new Date() - 60 * MS_PER_MINUTE);
+
+    //var start_date =  moment().subtract(1, 'd').toDate();
     console.log('start_date: '+start_date+' end_date: '+end_date);
-    var end_date = moment(new Date()).toDate();
+    var end_date = moment().toDate();
     console.log('start_date: '+start_date+' end_date: '+end_date);
 
     var count = 0;
