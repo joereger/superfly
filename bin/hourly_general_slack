@@ -33,19 +33,17 @@ function top_slackers(){
             if (err) throw err;
             console.log( "Number of slacks - result=", result );
             count = result;
-            this;
-        },
-        function sendSlack(err, blah){
-            if (err) throw err;
-            console.log('about to send slack msg count='+count);
-            slack.slack_out.send({
-                text: '' + count + ' slacks in the last 24 hours.',
-                channel: '#test',
-                username: 'Superfly',
-            });
+            return count;;
         }
     );
     console.log('out of step process');
+
+    console.log('about to send slack msg count='+count);
+    slack.slack_out.send({
+        text: '' + count + ' slacks in the last 24 hours.',
+        channel: '#test',
+        username: 'Superfly',
+    });
 
 //    var count = 0;
 //    mongo.SlackMessage.count(function(err, result){
