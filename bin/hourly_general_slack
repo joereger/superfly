@@ -33,6 +33,7 @@ function top_slackers(){
             if (err) throw err;
             console.log( "Number of slacks - result=", result );
             count = result;
+            this;
         },
         function sendSlack(err, blah){
             if (err) throw err;
