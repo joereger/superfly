@@ -18,17 +18,21 @@ function top_slackers(){
 
     var count = 0;
     Step(
+//        function getNumSlacks(){
+//            mongo.SlackMessage.count(function(err, result){
+//                console.log( "Number of slacks:", result );
+//                count = result;
+//                return;
+//            });
+//        },
         function getNumSlacks(){
-            mongo.SlackMessage.count(function(err, result){
-                console.log( "Number of slacks:", result );
-                count = result;
-                return;
-            });
+            console.log('about to run the count');
+            mongo.SlackMessage.count(this);
         },
-        function logStuffs(err, blah){
+        function logStuffs(err, result){
             if (err) throw err;
-            console.log( "Number of slacks in step 2:", count );
-            return;
+            console.log( "Number of slacks - result=", result );
+            count = result;
         },
         function sendSlack(err, blah){
             if (err) throw err;
