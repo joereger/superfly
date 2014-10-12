@@ -21,10 +21,9 @@ function top_slackers(){
         function step1(){
             console.log('about to run the count');
                 mongo.SlackMessage.count(function(err, result){
-                console.log( "result = :", result );
+                console.log( "step 1 result = :", result );
                 count = result;
             });
-            console.log('step 1 count = ' + count);
         },
         function step2(){
             console.log( "step 2 count = ", count );
@@ -39,7 +38,7 @@ function top_slackers(){
             });
         }
     ]);
-    console.log('out of step process');
+    console.log('out of step process count = '+count);
 
 
 
