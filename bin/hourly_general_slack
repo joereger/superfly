@@ -18,24 +18,26 @@ function top_slackers(){
 
     var count = 0;
     Async.series([
-        function step1(){
+        function(callback){
             console.log('about to run the count');
-                mongo.SlackMessage.count(function(err, result){
+            mongo.SlackMessage.count(function(err, result){
                 console.log( "step 1 result = :", result );
                 count = result;
+                callback(null, 'one');
             });
         },
-        function step2(){
+        function(callback){
             console.log( "step 2 count = ", count );
-            count = result;
+            callback(null, 'two');
         },
-        function step3(){
+        function(callback){
             console.log('step 3 count = '+count);
             slack.slack_out.send({
                 text: '' + count + ' slacks in the last 24 hours.',
                 channel: '#test',
                 username: 'Superfly',
             });
+            callback(null, 'three');
         }
     ]);
     console.log('out of step process count = '+count);
