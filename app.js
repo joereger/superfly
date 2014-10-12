@@ -14,7 +14,7 @@ app.use( bodyParser.urlencoded() );
 mongo = require("./conf/mongo.js");
 
 //synchronous execution of asynchronous steps
-var Step = require('step');
+var Async = require('async');
 
 //mount the routes
 app.use('/', require('./controllers/index.js'));
