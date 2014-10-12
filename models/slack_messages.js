@@ -10,5 +10,6 @@ function make(Schema, mongoose) {
     });
     return mongoose.model('slack_messages', SlackMessagesSchema);
 }
-
 module.exports.make = make;
+
+
