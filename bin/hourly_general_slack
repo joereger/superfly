@@ -13,7 +13,8 @@ hourly_general_slack();
 
 function top_slackers(){
 
-    var start_date =  moment(new Date()).subtract(1, 'days').toDate();
+    var start_date =  moment(new Date()).subtract(1, 'd').toDate();
+    console.log('start_date: '+start_date+' end_date: '+end_date);
     var end_date = moment(new Date()).toDate();
     console.log('start_date: '+start_date+' end_date: '+end_date);
 
@@ -38,34 +39,6 @@ function top_slackers(){
             callback(null, 'two');
         }
     ]);
-    console.log('out of step process count = '+count);
-
-
-
-//    var count = 0;
-//    mongo.SlackMessage.count(function(err, result){
-//        console.log( "Number of slacks:", result );
-//        count = result;
-//    });
-
-//    var count = 0;
-//    mongo.SlackMessage.where({"datetime": {'$gte': start_date, '$lte': end_date}}).count(function(err, result){
-//        console.log( "Number of slacks:", result );
-//        count = result;
-//    });
-
-//    var count = 0;
-//    mongo.SlackMessage.count({"datetime": {'$gte': start_date, '$lte': end_date}}, function(err, result){
-//        console.log( "Number of slacks:", result );
-//        count = result;
-//    });
-
-//    console.log('about to send slack msg count='+count);
-//    slack.slack_out.send({
-//        text: '' + count + ' slacks in the last 24 hours.',
-//        channel: '#test',
-//        username: 'Superfly',
-//    });
 
 }
 
