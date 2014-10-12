@@ -24,10 +24,12 @@ function top_slackers(){
                 count = result;
             });
         },
-        function logStuffs(){
+        function logStuffs(err, blah){
+            if (err) throw err;
             console.log( "Number of slacks in step 2:", count );
         },
-        function sendSlack(){
+        function sendSlack(err, blah){
+            if (err) throw err;
             console.log('about to send slack msg count='+count);
             slack.slack_out.send({
                 text: '' + count + ' slacks in the last 24 hours.',
