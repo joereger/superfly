@@ -21,7 +21,7 @@ function top_slackers(){
         function(callback){
             console.log('about to run the count');
             mongo.SlackMessage.count({datetime: {'$gte': start_date, '$lte': end_date}}, function(err, result){
-                if (err) return handleError(err);
+                if (err) return console.log(err);
                 console.log( "step 1 result = ", result );
                 count = result;
                 callback(null, 'one');
