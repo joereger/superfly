@@ -22,11 +22,13 @@ function top_slackers(){
             mongo.SlackMessage.count(function(err, result){
                 console.log( "Number of slacks:", result );
                 count = result;
+                return;
             });
         },
         function logStuffs(err, blah){
             if (err) throw err;
             console.log( "Number of slacks in step 2:", count );
+            return;
         },
         function sendSlack(err, blah){
             if (err) throw err;
@@ -38,6 +40,7 @@ function top_slackers(){
             });
         }
     );
+    console.log('out of step process');
 
 //    var count = 0;
 //    mongo.SlackMessage.count(function(err, result){
