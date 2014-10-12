@@ -20,8 +20,11 @@ function top_slackers(){
     Async.series([
         function step1(){
             console.log('about to run the count');
-            count = mongo.SlackMessage.count();
-            console.log('step 1 count = '+count);
+                mongo.SlackMessage.count(function(err, result){
+                console.log( "result = :", result );
+                count = result;
+            });
+            console.log('step 1 count = ' + count);
         },
         function step2(){
             console.log( "step 2 count = ", count );
