@@ -16,10 +16,16 @@ function top_slackers(){
     var end_date = moment().calendar();
 
     var count = 0;
-    mongo.SlackMessage.where({"datetime": {'$gte': start_date, '$lte': end_date}}).count(function(err, result){
+    mongo.SlackMessage.count(function(err, result){
         console.log( "Number of slacks:", result );
         count = result;
     });
+
+//    var count = 0;
+//    mongo.SlackMessage.where({"datetime": {'$gte': start_date, '$lte': end_date}}).count(function(err, result){
+//        console.log( "Number of slacks:", result );
+//        count = result;
+//    });
 
 //    var count = 0;
 //    mongo.SlackMessage.count({"datetime": {'$gte': start_date, '$lte': end_date}}, function(err, result){
