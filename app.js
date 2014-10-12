@@ -13,6 +13,9 @@ app.use( bodyParser.urlencoded() );
 //mongo object, sets up models & exports them
 mongo = require("./conf/mongo.js");
 
+//synchronous execution of asynchronous steps
+var Step = require('step');
+
 //mount the routes
 app.use('/', require('./controllers/index.js'));
 app.use('/save_slack_message_webhook', require('./controllers/save_slack_messages_webhook.js'));

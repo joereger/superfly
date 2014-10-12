@@ -3,6 +3,7 @@
 var slack = require("../conf/slack.js");
 var mongo = require("../conf/mongo.js");
 var moment = require('moment');
+var Step = require('step');
 
 function hourly_general_slack() {
     top_slackers();
@@ -16,10 +17,31 @@ function top_slackers(){
     var end_date = moment().calendar();
 
     var count = 0;
-    mongo.SlackMessage.count(function(err, result){
-        console.log( "Number of slacks:", result );
-        count = result;
-    });
+    Step(
+        function getNumSlacks(){
+            mongo.SlackMessage.count(function(err, result){
+                console.log( "Number of slacks:", result );
+                count = result;
+            });
+        },
+        function logStuffs(){
+            console.log( "Number of slacks in step 2:", count );
+        },
+        function sendSlack(){
+            console.log('about to send slack msg count='+count);
+            slack.slack_out.send({
+                text: '' + count + ' slacks in the last 24 hours.',
+                channel: '#test',
+                username: 'Superfly',
+            });
+        }
+    );
+
+//    var count = 0;
+//    mongo.SlackMessage.count(function(err, result){
+//        console.log( "Number of slacks:", result );
+//        count = result;
+//    });
 
 //    var count = 0;
 //    mongo.SlackMessage.where({"datetime": {'$gte': start_date, '$lte': end_date}}).count(function(err, result){
@@ -33,12 +55,12 @@ function top_slackers(){
 //        count = result;
 //    });
 
-    console.log('about to send slack msg count='+count);
-    slack.slack_out.send({
-        text: '' + count + ' slacks in the last 24 hours.',
-        channel: '#test',
-        username: 'Superfly',
-    });
+//    console.log('about to send slack msg count='+count);
+//    slack.slack_out.send({
+//        text: '' + count + ' slacks in the last 24 hours.',
+//        channel: '#test',
+//        username: 'Superfly',
+//    });
 
 }
 

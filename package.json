@@ -11,7 +11,8 @@
     "body-parser": "1.x.x",
     "node-slack": "0.0.5",
     "mongoose": "3.8.x",
-    "moment": "1.7.x"
+    "moment": "1.7.x",
+    "step": "0.0.x"
   },
   "engines": {
     "node": "0.10.x"
