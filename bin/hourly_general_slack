@@ -13,8 +13,8 @@ hourly_general_slack();
 
 function top_slackers(){
 
-    var start_date =  moment().subtract(1, 'days').calendar();
-    var end_date = moment().calendar();
+    var start_date =  moment().subtract(1, 'days').calendar().toDate();
+    var end_date = moment().calendar().toDate();
 
     var count = 0;
     Async.series([
