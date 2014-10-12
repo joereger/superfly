@@ -15,6 +15,7 @@ function top_slackers(){
 
     var start_date =  moment(new Date()).subtract(1, 'days').toDate();
     var end_date = moment(new Date()).toDate();
+    console.log('start_date: '+start_date+' end_date: '+end_date);
 
     var count = 0;
     Async.series([
