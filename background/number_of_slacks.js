@@ -19,7 +19,7 @@ exports.run = function(start_date, end_date){
             common.slack.slack_out.send({
                 text: count + ' slacks in the last hour',
                 channel: '#test',
-                username: 'Superfly',
+                username: 'Superfly'
             });
             callback(null, 'two');
         }

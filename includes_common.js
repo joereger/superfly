@@ -2,7 +2,7 @@ exports.slack = require("./conf/slack.js");
 exports.mongo = require("./conf/mongo.js");
 exports.moment = require('moment');
 exports.async = require('async');
-
+exports.hashmap = require('hashmap').HashMap;
 
 var MS_PER_MINUTE = 60000;
 var MS_PER_HOUR = 60 * MS_PER_MINUTE;

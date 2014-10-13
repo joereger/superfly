@@ -12,7 +12,8 @@
     "node-slack": "0.0.5",
     "mongoose": "3.8.x",
     "moment": "1.7.x",
-    "async": "0.9.x"
+    "async": "0.9.x",
+    "hashmap": "0.9.x"
   },
   "engines": {
     "node": "0.10.x"
