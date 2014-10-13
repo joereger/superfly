@@ -4,7 +4,7 @@ var common = require('../includes_common.js');
 exports.run = function(start_date, end_date){
 
     var count = 0;
-    async.series([
+    common.async.series([
         function(callback){
             console.log('about to run the count');
             mongo.SlackMessage.count({datetime: {'$gte': start_date, '$lte': end_date}}, function(err, result){
