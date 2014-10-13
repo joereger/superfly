@@ -1,47 +1,21 @@
 #! /app/vendor/node/bin/node
 
-var slack = require("../conf/slack.js");
-var mongo = require("../conf/mongo.js");
-var moment = require('moment');
-var Async = require('async');
+var all_bg_tasks = require('../background/includes_all_bg.js');
+var common = require('../includes_common.js');
 
 function hourly_general_slack() {
-    top_slackers();
+
+    //set date period
+    var start_date =  common.one_hour_ago();
+    var end_date = new Date()
+    console.log('start_date: '+start_date+' end_date: '+end_date);
+
+    //call a slack stat
+    all_bg_tasks.number_of_slacks.run(start_date, end_date);
+
 }
 hourly_general_slack();
 
 
-function top_slackers(){
 
-    var MS_PER_MINUTE = 60000;
-    var start_date = new Date(new Date() - 60 * MS_PER_MINUTE);
-
-    //var start_date =  moment().subtract(1, 'd').toDate();
-    console.log('start_date: '+start_date+' end_date: '+end_date);
-    var end_date = moment().toDate();
-    console.log('start_date: '+start_date+' end_date: '+end_date);
-
-    var count = 0;
-    Async.series([
-        function(callback){
-            console.log('about to run the count');
-            mongo.SlackMessage.count({datetime: {'$gte': start_date, '$lte': end_date}}, function(err, result){
-                if (err) return console.log(err);
-                console.log( "step 1 result = ", result );
-                count = result;
-                callback(null, 'one');
-            });
-        },
-        function(callback){
-            console.log('step 2 count = '+count);
-            slack.slack_out.send({
-                text: count + ' slacks in the last 24 hours.',
-                channel: '#test',
-                username: 'Superfly',
-            });
-            callback(null, 'two');
-        }
-    ]);
-
-}
 

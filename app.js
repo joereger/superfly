@@ -10,11 +10,8 @@ var bodyParser = require('body-parser');
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded() );
 
-//mongo object, sets up models & exports them
-mongo = require("./conf/mongo.js");
-
-//synchronous execution of asynchronous steps
-var Async = require('async');
+//include common things like mongo, slack, etc
+common = require('./includes_common.js');
 
 //mount the routes
 app.use('/', require('./controllers/index.js'));

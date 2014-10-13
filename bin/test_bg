@@ -1,8 +1,0 @@
-#! /app/vendor/node/bin/node
-
-function test_bg() {
-
-  console.log('Hello from a background task');
-
-}
-test_bg();
