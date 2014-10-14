@@ -17,10 +17,12 @@ router.post('/', function(req, res) {
             });
             slack_message.save(function (err) {if (err) console.log ('Error on save!' + err)});
 
-            return {
-                text: 'booyah, @' + hook.user_name + ' you are so correct old sport',
-                username: 'Superfly'
-            };
+            return{};
+
+//            return {
+//                text: 'booyah, @' + hook.user_name + ' you are so correct old sport',
+//                username: 'Superfly'
+//            };
         }
 
     });
