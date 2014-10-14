@@ -8,10 +8,11 @@ function hourly_general_slack() {
     //set date period
     var start_date =  common.one_hour_ago();
     var end_date = new Date()
-    console.log('start_date: '+start_date+' end_date: '+end_date);
 
     //call a slack stat
-    all_bg_tasks.top_slackers.run(start_date, end_date);
+    all_bg_tasks.number_of_slacks.run(start_date, end_date, 'in the last hour');
+    all_bg_tasks.top_slackers.run(start_date, end_date, 'in the last hour');
+    all_bg_tasks.top_words.run(start_date, end_date, 'in the last hour');
 
 }
 hourly_general_slack();

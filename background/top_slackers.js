@@ -14,11 +14,8 @@ exports.run = function(start_date, end_date, time_period_phrasing){
             //iterate all slack_messages in the date period
             common.mongo.SlackMessage.find({datetime: {'$gte': start_date, '$lte': end_date}}, function ( err, slack_messages ) {
                 if (err) return console.log(err);
-                console.log('step 1: inside mongo result query');
                 number_of_messages = slack_messages.length;
-                console.log('step 1: number_of_messages='+number_of_messages);
                 slack_messages.forEach( function ( slack_message ) {
-                    console.log('step 1: slack_message='+slack_message);
                     //build array of who posted and increment each one
                     if (slackers.has(slack_message.user_name)){
                         var current_value = slackers.get(slack_message.user_name);
@@ -29,9 +26,6 @@ exports.run = function(start_date, end_date, time_period_phrasing){
                     }
 
                 } );
-                console.log('step 1: slackers.count()='+slackers.count());
-
-
                 callback(null, 'one');
             } );
 
@@ -39,11 +33,7 @@ exports.run = function(start_date, end_date, time_period_phrasing){
         function(callback){
             console.log('step 2');
 
-            var msg = 'Top Slackers Report: '+number_of_messages + ' slacks sent '+time_period_phrasing+'\n';
-
-            slackers.forEach(function(value, key) {
-                console.log('step 2: slackers: ' + key + " : " + value);
-            });
+            var msg = 'top slackers '+time_period_phrasing+'\n';
 
             slackers.forEach(function(value, key) {
                 console.log(key + " : " + value);

@@ -13,7 +13,8 @@
     "mongoose": "3.8.x",
     "moment": "1.7.x",
     "async": "0.9.x",
-    "hashmap": "0.9.x"
+    "hashmap": "0.9.x",
+    "sentence-tokenizer": "0.0.x"
   },
   "engines": {
     "node": "0.10.x"
