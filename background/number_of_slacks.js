@@ -1,7 +1,7 @@
 
 var common = require('../includes_common.js');
 
-exports.run = function(start_date, end_date){
+exports.run = function(start_date, end_date, time_period_phrasing){
 
     var count = 0;
     common.async.series([
@@ -17,7 +17,7 @@ exports.run = function(start_date, end_date){
         function(callback){
             console.log('step 2 count = '+count);
             common.slack.slack_out.send({
-                text: count + ' slacks in the last hour',
+                text: count + ' slacks '+time_period_phrasing,
                 channel: '#test',
                 username: 'Superfly'
             });

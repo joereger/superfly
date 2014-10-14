@@ -1,7 +1,7 @@
 
 var common = require('../includes_common.js');
 
-exports.run = function(start_date, end_date){
+exports.run = function(start_date, end_date, time_period_phrasing){
 
     //set up a hashmap to store values
     var slackers = new common.hashmap();
@@ -13,9 +13,12 @@ exports.run = function(start_date, end_date){
 
             //iterate all slack_messages in the date period
             common.mongo.SlackMessage.find({datetime: {'$gte': start_date, '$lte': end_date}}, function ( err, slack_messages ) {
+                if (err) return console.log(err);
+                console.log('step 1: inside mongo result query');
                 number_of_messages = slack_messages.length;
+                console.log('step 1: number_of_messages='+number_of_messages);
                 slack_messages.forEach( function ( slack_message ) {
-
+                    console.log('step 1: slack_message='+slack_message);
                     //build array of who posted and increment each one
                     if (slackers.has(slack_message.user_name)){
                         var current_value = slackers.get(slack_message.user_name);
@@ -25,15 +28,22 @@ exports.run = function(start_date, end_date){
                         slackers.set(slack_message.user_name, 1);
                     }
 
-
                 } );
+                console.log('step 1: slackers.count()='+slackers.count());
+
+
+                callback(null, 'one');
             } );
-            callback(null, 'one');
+
         },
         function(callback){
             console.log('step 2');
 
-            var msg = number_of_messages + ' slacks sent in the last hour\n';
+            var msg = 'Top Slackers Report: '+number_of_messages + ' slacks sent '+time_period_phrasing+'\n';
+
+            slackers.forEach(function(value, key) {
+                console.log('step 2: slackers: ' + key + " : " + value);
+            });
 
             slackers.forEach(function(value, key) {
                 console.log(key + " : " + value);
