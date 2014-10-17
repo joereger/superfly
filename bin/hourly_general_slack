@@ -12,8 +12,8 @@ function hourly_general_slack() {
     //call a slack stat
     all_bg_tasks.number_of_slacks.run(start_date, end_date, 'since the start of the week');
     all_bg_tasks.top_slackers.run(start_date, end_date, 'since the start of the week');
-    all_bg_tasks.top_words.run(start_date, end_date, 'since the start of the week');
-    all_bg_tasks.sentiment_good.run(start_date, end_date, 'since the start of the week');
+    //all_bg_tasks.top_words.run(start_date, end_date, 'since the start of the week');
+    all_bg_tasks.sentiment_report.run(start_date, end_date, 'since the start of the week');
 
 }
 hourly_general_slack();
