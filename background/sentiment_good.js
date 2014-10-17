@@ -8,6 +8,8 @@ exports.run = function(start_date, end_date, time_period_phrasing){
     var catted_slacks_by_slacker = new common.hashmap();
     var sentiment_by_slacker = new common.hashmap();
     var comparative_by_slacker = new common.hashmap();
+    var positive_words = new common.hashmap();
+    var negative_words = new common.hashmap();
 
     common.async.series([
         function(callback){
@@ -36,6 +38,8 @@ exports.run = function(start_date, end_date, time_period_phrasing){
                     var result = sentiment(value);
                     sentiment_by_slacker.set(key, result.score);
                     comparative_by_slacker.set(key, result.comparative);
+                    positive_words.set(key, result.positive);
+                    negative_words.set(key, result.negative);
                 });
 
                 callback(null, 'one');
@@ -47,7 +51,7 @@ exports.run = function(start_date, end_date, time_period_phrasing){
             var msg = '*sentiment summary '+time_period_phrasing+'*\n';
 
             catted_slacks_by_slacker.keys().sort().forEach(function(key) {
-                msg += '\n'+key+': sentiment score of '+sentiment_by_slacker.get(key)+'';
+                msg += '\n'+key+' sentiment score: '+sentiment_by_slacker.get(key)+' positive['+positive_words.get(key)+'] negative['+negative_words.get(key)+']';
             });
 
             common.slack.slack_out.send({
