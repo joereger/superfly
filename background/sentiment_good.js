@@ -51,7 +51,43 @@ exports.run = function(start_date, end_date, time_period_phrasing){
             var msg = '*sentiment summary '+time_period_phrasing+'*\n';
 
             catted_slacks_by_slacker.keys().sort().forEach(function(key) {
-                msg += '\n'+key+' sentiment score: '+sentiment_by_slacker.get(key)+' positive['+positive_words.get(key)+'] negative['+negative_words.get(key)+']';
+                var mood = 'neutral';
+                var score = sentiment_by_slacker.get(key);
+
+                if (score >= 15){
+                    mood = 'basically george clooney and emma watson playing with puppies';
+                } else if (score >= 10 && score < 15){
+                    mood = 'a luminous conflagration of positive energy'
+                } else if (score >= 7 && score < 10){
+                    mood = 'glowing fucking positivity'
+                } else if (score >= 5 && score < 7){
+                    mood = 'really damn positive'
+                } else if (score >= 2 && score < 5){
+                    mood = 'positive'
+                } else if (score > 0 && score < 2){
+                    mood = 'kinda positive'
+                } else if (score < 0 && score >= -2){
+                    mood = 'kinda negative'
+                } else if (score < 0 && score >= -2){
+                    mood = 'negative'
+                } else if (score < -2 && score >= -5){
+                    mood = 'really damn negative'
+                } else if (score < -5 && score >= -7){
+                    mood = 'fiery pissed-offedness exemplified'
+                } else if (score < -7 && score >= -10){
+                    mood = 'a walking shitstorm of vile verbal excretions'
+                } else if (score < -10 && score >= -5000000){
+                    mood = 'basically henry rollins and lewis black drunk talking shit about justin bieber'
+                } else {
+                    mood = 'neutral';
+                }
+
+                var plus_sign = '';
+                if (score>0){
+                    plus_sign = '+';
+                }
+
+                msg += '\n\n'+key+'\'s mood: '+mood+' ('+plus_sign+''+sentiment_by_slacker.get(key)+')\npositive words[ '+positive_words.get(key)+' ]\nnegative words{ '+negative_words.get(key)+' ]';
             });
 
             common.slack.slack_out.send({
