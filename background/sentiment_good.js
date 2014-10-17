@@ -87,7 +87,7 @@ exports.run = function(start_date, end_date, time_period_phrasing){
                     plus_sign = '+';
                 }
 
-                msg += '\n\n'+key+'\'s mood: '+mood+' ('+plus_sign+''+sentiment_by_slacker.get(key)+')\npositive words[ '+positive_words.get(key)+' ]\nnegative words{ '+negative_words.get(key)+' ]';
+                msg += '\n\n'+key+'\'s mood: '+mood+' ('+plus_sign+''+sentiment_by_slacker.get(key)+')\n   positive words[ '+positive_words.get(key)+' ]\n   negative words{ '+negative_words.get(key)+' ]';
             });
 
             common.slack.slack_out.send({
