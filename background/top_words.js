@@ -39,18 +39,17 @@ exports.run = function(start_date, end_date, time_period_phrasing){
                     }
 
                 } );
-                console.log('step 1: words.count()='+word_counts.count());
                 callback(null, 'one');
             } );
 
         },
         function(callback){
-            console.log('step 2');
-
-            var msg = 'top words used '+time_period_phrasing+'\n';
+            var msg = '*top words used '+time_period_phrasing+'*\n';
 
             word_counts.forEach(function(value, key) {
-                msg += '\n*'+key+':* '+value+' times';
+                if(key.indexOf("http") == -1) {
+                    msg += '\n'+key+': '+value+' times';
+                }
             });
 
             common.slack.slack_out.send({

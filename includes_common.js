@@ -4,6 +4,8 @@ exports.moment = require('moment');
 exports.async = require('async');
 exports.hashmap = require('hashmap').HashMap;
 
+//moment.format();
+
 var MS_PER_MINUTE = 60000;
 var MS_PER_HOUR = 60 * MS_PER_MINUTE;
 var MS_PER_DAY = 24 * MS_PER_HOUR;

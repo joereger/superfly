@@ -5,35 +5,49 @@ var sentiment = require('sentiment');
 exports.run = function(start_date, end_date, time_period_phrasing){
 
     //set up a hashmap to store values
-    var word_counts = new common.hashmap();
-    var number_of_messages = 0;
+    var catted_slacks_by_slacker = new common.hashmap();
+    var sentiment_by_slacker = new common.hashmap();
+    var comparative_by_slacker = new common.hashmap();
 
     common.async.series([
         function(callback){
 
             common.mongo.SlackMessage.find({datetime: {'$gte': start_date, '$lte': end_date}}, function ( err, slack_messages ) {
                 if (err) return console.log(err);
-                number_of_messages = slack_messages.length;
+
+                //Iterate to concatenate all of a user's messages
                 slack_messages.forEach( function ( slack_message ) {
 
                     if (slack_message.text) {
 
-                        var r1 = sentiment('Cats are stupid.');
-                        console.dir(r1);
+                        //concatenate the messages of each slacker
+                        if (catted_slacks_by_slacker.has(slack_message.user_name)){
+                            var current_value = catted_slacks_by_slacker.get(slack_message.user_name);
+                            var new_value = current_value + ' ' + slack_message.text;
+                            catted_slacks_by_slacker.set(slack_message.user_name, new_value);
+                        } else {
+                            catted_slacks_by_slacker.set(slack_message.user_name, slack_message.text);
+                        }
 
                     }
-
                 } );
+
+                catted_slacks_by_slacker.forEach(function(value, key) {
+                    var result = sentiment(value);
+                    sentiment_by_slacker.set(key, result.score);
+                    comparative_by_slacker.set(key, result.comparative);
+                });
+
                 callback(null, 'one');
             } );
 
         },
         function(callback){
 
-            var msg = 'happiest individual '+time_period_phrasing+'\n';
+            var msg = '*sentiment summary '+time_period_phrasing+'*\n';
 
-            word_counts.forEach(function(value, key) {
-                msg += '\n*'+key+':* '+value+' times';
+            catted_slacks_by_slacker.keys().sort().forEach(function(key) {
+                msg += '\n'+key+': sentiment score of '+sentiment_by_slacker.get(key)+'';
             });
 
             common.slack.slack_out.send({

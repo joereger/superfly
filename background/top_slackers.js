@@ -14,6 +14,7 @@ exports.run = function(start_date, end_date, time_period_phrasing){
                 if (err) return console.log(err);
                 number_of_messages = slack_messages.length;
                 slack_messages.forEach( function ( slack_message ) {
+
                     //build array of who posted and increment each one
                     if (slackers.has(slack_message.user_name)){
                         var current_value = slackers.get(slack_message.user_name);
@@ -29,10 +30,10 @@ exports.run = function(start_date, end_date, time_period_phrasing){
 
         },
         function(callback){
-            var msg = 'top slackers '+time_period_phrasing+'\n';
+            var msg = '*top slackers '+time_period_phrasing+'*\n';
 
             slackers.forEach(function(value, key) {
-                msg += '\n*'+key+':* '+value+' slacks';
+                msg += '\n'+key+': '+value+' slacks';
             });
 
             common.slack.slack_out.send({

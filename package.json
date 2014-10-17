@@ -11,9 +11,9 @@
     "body-parser": "1.x.x",
     "node-slack": "0.0.5",
     "mongoose": "3.8.x",
-    "moment": "1.7.x",
+    "moment": "2.8.x",
     "async": "0.9.x",
-    "hashmap": "0.9.x",
+    "hashmap": "1.x.x",
     "sentence-tokenizer": "0.0.x",
     "sentiment": "1.0.x"
   },
