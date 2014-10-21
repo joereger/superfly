@@ -8,11 +8,10 @@ router.get('/', function(req, res) {
     //hack to make local testing easier
     if (req.query.password == 'superfly'){
 
-        var start_date =  common.moment().startOf('week').toDate();
+        var start_date =  common.moment().startOf('year').toDate();
         var end_date = new Date();
 
-        all_bg_tasks.sentiment_report.run(start_date, end_date, 'since the start of the week');
-
+        all_bg_tasks.sentiment_report.run(start_date, end_date, 'since the start of the year');
 
         //secret response
         res.send("<div style='font-size: 78px;'>the superfly eats purple diamond croissants for brunch</div>");

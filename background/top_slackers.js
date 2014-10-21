@@ -4,7 +4,7 @@ var common = require('../includes_common.js');
 exports.run = function(start_date, end_date, time_period_phrasing){
 
     //set up a hashmap to store values
-    var slackers = new common.hashmap();
+    var slackers = new common.Map();
     var number_of_messages = 0;
 
     common.async.series([

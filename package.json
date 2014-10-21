@@ -13,9 +13,9 @@
     "mongoose": "3.8.x",
     "moment": "2.8.x",
     "async": "0.9.x",
-    "hashmap": "1.x.x",
     "sentence-tokenizer": "0.0.x",
-    "sentiment": "1.0.x"
+    "sentiment": "1.0.x",
+    "collections": "1.2.x"
   },
   "engines": {
     "node": "0.10.x"
