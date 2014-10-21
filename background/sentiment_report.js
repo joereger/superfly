@@ -1,21 +1,21 @@
 
-var common = require('../includes_common.js');
+var sf_ = require('../includes_sf_.js');
 var sentiment = require('sentiment');
 
 exports.run = function(start_date, end_date, time_period_phrasing){
 
     //set up maps to store values
-    var catted_slacks_by_slacker = new common.Map();
-    var sentiment_by_slacker = new common.Map();
-    var comparative_by_slacker = new common.Map();
-    var positive_words = new common.Map();
-    var negative_words = new common.Map();
+    var catted_slacks_by_slacker = new sf_.Map();
+    var sentiment_by_slacker = new sf_.Map();
+    var comparative_by_slacker = new sf_.Map();
+    var positive_words = new sf_.Map();
+    var negative_words = new sf_.Map();
 
 
-    common.async.series([
+    sf_.async.series([
         function(callback){
 
-            common.mongo.SlackMessage.find({datetime: {'$gte': start_date, '$lte': end_date}}, function ( err, slack_messages ) {
+            sf_.mongo.SlackMessage.find({datetime: {'$gte': start_date, '$lte': end_date}}, function ( err, slack_messages ) {
                 if (err) return console.log(err);
 
                 //Iterate to concatenate all of a user's messages
@@ -51,8 +51,7 @@ exports.run = function(start_date, end_date, time_period_phrasing){
 
             var msg = '*sentiment summary '+time_period_phrasing+'*\n';
 
-            var keys_sorted_by_sentiment = common.keys_sorted_by_vals(sentiment_by_slacker);
-            //console.log('keys_sorted_by_sentiment: '+keys_sorted_by_sentiment.toString());
+            var keys_sorted_by_sentiment = sf_.keys_sorted_by_vals(sentiment_by_slacker);
 
             keys_sorted_by_sentiment.forEach(function(key) {
                 var mood = 'neutral';
@@ -137,7 +136,7 @@ exports.run = function(start_date, end_date, time_period_phrasing){
 //
 //            });
 
-            common.slack.slack_out.send({
+            sf_.slack.slack_out.send({
                 text: msg,
                 channel: '#test',
                 username: 'Superfly'

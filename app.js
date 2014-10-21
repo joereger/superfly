@@ -10,8 +10,8 @@ var bodyParser = require('body-parser');
 app.use( bodyParser.json() );
 app.use( bodyParser.urlencoded() );
 
-//include common things like mongo, slack, etc
-common = require('./includes_common.js');
+//include sf_ things like mongo, slack, etc
+sf_ = require('./includes_sf_.js');
 
 //mount the routes
 app.use('/', require('./controllers/index.js'));
