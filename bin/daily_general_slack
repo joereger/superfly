@@ -5,15 +5,11 @@ var sf_ = require('../includes_sf_.js');
 
 function daily_general_slack() {
 
-    //set date period
-    var start_date =  sf_.moment().startOf('day').toDate();
+    //sentiment
+    //@todo only send if friday
+    var start_date =  sf_.moment().startOf('week').toDate();
     var end_date = new Date();
-
-    //call a slack stat
-//    all_bg_tasks.number_of_slacks.run(start_date, end_date, 'since the start of the week');
-//    all_bg_tasks.top_slackers.run(start_date, end_date, 'since the start of the week');
-//    all_bg_tasks.top_words.run(start_date, end_date, 'since the start of the week');
-//    all_bg_tasks.sentiment_report.run(start_date, end_date, 'since the start of the week');
+    all_bg_tasks.sentiment_report.run(start_date, end_date, 'since the start of the week');
 
 }
 daily_general_slack();
