@@ -3,7 +3,7 @@ var router   = express.Router();
 
 router.post('/', function(req, res) {
 
-    var reply = sf_.slack.slack_in.respond(req.body,function(hook) {
+    var reply = sf_.slack.slack_in_general.respond(req.body,function(hook) {
         if (hook.user_name != 'slackbot'){
 
             var slack_message = new sf_.mongo.SlackMessage ({

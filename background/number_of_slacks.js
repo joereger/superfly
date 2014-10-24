@@ -13,7 +13,7 @@ exports.run = function(start_date, end_date, time_period_phrasing){
             });
         },
         function(callback){
-            sf_.slack.slack_out.send({
+            sf_.slack.slack_out_test.send({
                 text: '*'+count + ' slacks '+time_period_phrasing+'*',
                 channel: '#test',
                 username: 'Superfly'

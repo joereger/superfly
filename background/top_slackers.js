@@ -38,7 +38,7 @@ exports.run = function(start_date, end_date, time_period_phrasing){
                 msg += '\n'+key+': '+slackers.get(key)+' slacks';
             });
 
-            sf_.slack.slack_out.send({
+            sf_.slack.slack_out_test.send({
                 text: msg,
                 channel: '#test',
                 username: 'Superfly'
