@@ -6,7 +6,7 @@ var sf_ = require('../includes_sf_.js');
 function hourly_general_slack() {
 
     //ten means ten + daily message
-    if (sf_.moment().hour() == 10 && sf_.moment().day() != 6 && sf_.moment().day() != 7){
+    if (sf_.moment().hour() == 14 && sf_.moment().day() != 6 && sf_.moment().day() != 7){
         var msg = '@everyone: ten means ten.';
         if (sf_.moment().day() == 1){
             msg += ' it\'s test day.';

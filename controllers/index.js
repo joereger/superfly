@@ -9,10 +9,11 @@ router.get('/', function(req, res) {
     if (req.query.password == 'superfly'){
 
 
+        console.log('hour '+sf_.moment().hour());
 
-        var start_date =  sf_.moment().startOf('year').toDate();
-        var end_date = new Date();
-        all_bg_tasks.top_phrases_by_slacker.run(start_date, end_date, 'since the start of the year');
+        //var start_date =  sf_.moment().startOf('year').toDate();
+        //var end_date = new Date();
+        //all_bg_tasks.top_phrases_by_slacker.run(start_date, end_date, 'since the start of the year');
 
 
         //secret response
