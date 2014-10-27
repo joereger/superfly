@@ -11,7 +11,7 @@ exports.run = function(start_date, end_date, time_period_phrasing){
     var positive_words = new sf_.Map();
     var negative_words = new sf_.Map();
 
-
+    //make these async's serial
     sf_.async.series([
         function(callback){
 

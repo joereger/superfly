@@ -15,7 +15,8 @@
     "async": "0.9.x",
     "sentence-tokenizer": "0.0.x",
     "sentiment": "1.0.x",
-    "collections": "1.2.x"
+    "collections": "1.2.x",
+    "gramophone": "0.0.x"
   },
   "engines": {
     "node": "0.10.x"

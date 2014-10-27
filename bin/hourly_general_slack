@@ -5,15 +5,30 @@ var sf_ = require('../includes_sf_.js');
 
 function hourly_general_slack() {
 
-    //set date period
-    var start_date =  sf_.moment().startOf('hour').toDate();
-    var end_date = new Date();
-
-    //call a slack stat
-    //all_bg_tasks.number_of_slacks.run(start_date, end_date, 'since the start of the week');
-    //all_bg_tasks.top_slackers.run(start_date, end_date, 'since the start of the week');
-    //all_bg_tasks.top_words.run(start_date, end_date, 'since the start of the week');
-    //all_bg_tasks.sentiment_report.run(start_date, end_date, 'since the start of the week');
+    //ten means ten + daily message
+    if (sf_.moment().hour() == 10 && sf_.moment().day() != 6 && sf_.moment().day() != 7){
+        var msg = '@everyone: ten means ten.';
+        if (sf_.moment().day() == 1){
+            msg += ' it\'s test day.';
+        }
+        if (sf_.moment().day() == 2){
+            msg += ' let\'s do this deploy.';
+        }
+        if (sf_.moment().day() == 3){
+            msg += ' welcome to humpday.';
+        }
+        if (sf_.moment().day() == 4){
+            msg += ' strong thursdays lead to easy mondays.';
+        }
+        if (sf_.moment().day() == 5){
+            msg += ' tgif.';
+        }
+        sf_.slack.slack_out_superfly.send({
+            text: msg,
+            channel: '#superfly',
+            username: 'Superfly'
+        });
+    }
 
 }
 hourly_general_slack();

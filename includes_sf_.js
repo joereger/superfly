@@ -3,6 +3,7 @@ exports.mongo = require("./conf/mongo.js");
 exports.moment = require('moment');
 exports.async = require('async');
 exports.Map = require("collections/map"); //collectionsjs.com
+exports.gramophone = require('gramophone');
 
 exports.keys_sorted_by_vals = function(hashmap){
 
