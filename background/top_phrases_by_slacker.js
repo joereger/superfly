@@ -34,10 +34,12 @@ exports.run = function(start_date, end_date, time_period_phrasing){
                 } );
 
                 catted_slacks_by_slacker.forEach(function(value, key) {
-                    console.log(key+' '+value);
-                    var g = sf_.gramophone.extract(value, {score: true});
-                    top_phrases_by_slacker.set(key, g);
-                    console.log('\n'+key+' '+ g[0]);
+                    console.log(key+': '+value);
+                    var startWords = require('../node_modules/gramophone/stopwords.json');
+                    startWords = [];
+                    var g = sf_.gramophone.extract(value, {score: true, min: 2, ngrams: [3, 4, 5], startWords: startWords});
+                    //top_phrases_by_slacker.set(key, g);
+                    console.log(key+'-> '+g);
                 });
 
                 callback(null, 'one');
@@ -47,16 +49,16 @@ exports.run = function(start_date, end_date, time_period_phrasing){
         function(callback){
             console.log('into step 2');
 
-            var msg = '*top phrases used '+time_period_phrasing+'*\n';
-
-            top_phrases_by_slacker.forEach(function(key) {
-                var g = top_phrases_by_slacker.get(key);
-                msg += '\n\n*'+key+'\'s most used phrases*:  '+ g +']';
-
-            });
-
-            console.log('OUTPUT');
-            console.log(msg);
+//            var msg = '*top phrases used '+time_period_phrasing+'*\n';
+//
+//            top_phrases_by_slacker.forEach(function(key) {
+//                var g = top_phrases_by_slacker.get(key);
+//                msg += '\n\n*'+key+'\'s most used phrases*:  '+ g +']';
+//
+//            });
+//
+//            console.log('OUTPUT');
+//            console.log(msg);
 
 
 
