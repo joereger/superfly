@@ -6,31 +6,31 @@ var sf_ = require('../includes_sf_.js');
 function hourly_general_slack() {
 
     //ten means ten + daily message
-    if (sf_.moment().hour() == 15 && sf_.moment().day() != 6 && sf_.moment().day() != 7){
-        var msg = '@everyone: ten means ten.';
-
-        if (sf_.moment().day() == 1){
-            msg += ' it\'s test day.';
-        }
-        if (sf_.moment().day() == 2){
-            msg += ' let\'s do this deploy.';
-        }
-        if (sf_.moment().day() == 3){
-            msg += ' welcome to humpday.';
-        }
-        if (sf_.moment().day() == 4){
-            msg += ' strong thursdays lead to easy mondays.';
-        }
-        if (sf_.moment().day() == 5){
-            msg += ' tgif.';
-        }
-
-        sf_.slack.slack_out_superfly.send({
-            text: msg,
-            channel: '#superfly',
-            username: 'Superfly'
-        });
-    }
+//    if (sf_.moment().hour() == 15 && sf_.moment().day() != 6 && sf_.moment().day() != 7){
+//        var msg = '@everyone: ten means ten.';
+//
+//        if (sf_.moment().day() == 1){
+//            msg += ' it\'s test day.';
+//        }
+//        if (sf_.moment().day() == 2){
+//            msg += ' let\'s do this deploy.';
+//        }
+//        if (sf_.moment().day() == 3){
+//            msg += ' welcome to humpday.';
+//        }
+//        if (sf_.moment().day() == 4){
+//            msg += ' strong thursdays lead to easy mondays.';
+//        }
+//        if (sf_.moment().day() == 5){
+//            msg += ' tgif.';
+//        }
+//
+//        sf_.slack.slack_out_superfly.send({
+//            text: msg,
+//            channel: '#superfly',
+//            username: 'Superfly'
+//        });
+//    }
 
 }
 hourly_general_slack();
