@@ -57,30 +57,37 @@ exports.run = function(start_date, end_date, time_period_phrasing){
                 var mood = 'neutral';
                 var score = sentiment_by_slacker.get(key);
 
-                if (score >= 15){
-                    mood = 'basically george clooney and emma watson playing with puppies';
-                } else if (score >= 10 && score < 15){
+
+                if (score >= 30){
+                    mood = 'prossibly a superfly cheat who is in reality crazy pissed off at the universe';
+                } else if (score >= 20 && score < 30){
                     mood = 'a luminous conflagration of positive energy'
+                } else if (score >= 10 && score < 15){
+                    mood = 'walking on a cloud of positive vibes'
                 } else if (score >= 7 && score < 10){
                     mood = 'glowing fucking positivity'
                 } else if (score >= 5 && score < 7){
                     mood = 'really damn positive'
                 } else if (score >= 2 && score < 5){
-                    mood = 'positive'
+                    mood = 'generally positive'
                 } else if (score > 0 && score < 2){
-                    mood = 'kinda positive'
+                    mood = 'just positive enough to not be negative'
                 } else if (score < 0 && score >= -2){
-                    mood = 'kinda negative'
+                    mood = 'just negative enough to not be positive'
                 } else if (score < 0 && score >= -2){
-                    mood = 'negative'
+                    mood = 'generally negative'
                 } else if (score < -2 && score >= -5){
                     mood = 'really damn negative'
                 } else if (score < -5 && score >= -7){
                     mood = 'fiery pissed-offedness'
                 } else if (score < -7 && score >= -10){
+                    mood = 'conflagration of pissed-offedness'
+                } else if (score < -10 && score >= -15){
+                    mood = 'tactical thermonuclear slack-based war monger'
+                } else if (score < -15 && score >= -30){
                     mood = 'a walking shitstorm of vile verbal excretions'
-                } else if (score < -10 && score >= -5000000){
-                    mood = 'basically henry rollins and lewis black drunk talking shit about justin bieber'
+                } else if (score < -30 && score >= -5000000){
+                    mood = 'prossibly a superfly cheat who is in reality very happy and zen-like'
                 } else {
                     mood = 'neutral';
                 }
