@@ -6,8 +6,6 @@ router.post('/', function(req, res) {
     var reply = sf_.slack.slack_in_general.respond(req.body,function(hook) {
         if (hook.user_name != 'slackbot'){
 
-            console.log("save_slack_messages_webhook.js "+ hook.text);
-
             var slack_message = new sf_.mongo.SlackMessage ({
                 datetime: new Date(),
                 channel_name: hook.channel_name,
