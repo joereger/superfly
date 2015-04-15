@@ -1,4 +1,4 @@
-#! /app/vendor/node/bin/node
+#!/app/vendor/node/bin/node
 
 var all_bg_tasks = require('../background/includes_all_bg.js');
 var sf_ = require('../includes_sf_.js');

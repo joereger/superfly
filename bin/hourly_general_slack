@@ -1,4 +1,4 @@
-#! /app/vendor/node/bin/node
+#!/app/vendor/node/bin/node
 
 
 console.log("hourly_general_slack 1");
