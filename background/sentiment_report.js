@@ -49,7 +49,7 @@ exports.run = function(start_date, end_date, time_period_phrasing){
         },
         function(callback){
 
-            var msg = '*sentiment summary '+time_period_phrasing+'*\n';
+            var msg = '*sentiment summary '+time_period_phrasing+'* #general, #devs and #coaching\n';
 
             var keys_sorted_by_sentiment = sf_.keys_sorted_by_vals(sentiment_by_slacker);
 

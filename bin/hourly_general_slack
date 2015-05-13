@@ -6,11 +6,11 @@ function hourly_general_slack() {
 
     console.log("hourly_general_slack");
 
-    sf_.slack.slack_out_test.send({
-                text: 'Superfly waking up... slowly.',
-                channel: '#test',
-                username: 'Superfly'
-            });
+//    sf_.slack.slack_out_test.send({
+//                text: 'Superfly waking up... slowly.',
+//                channel: '#test',
+//                username: 'Superfly'
+//            });
 
     //ten means ten + daily message
 //    if (sf_.moment().hour() == 15 && sf_.moment().day() != 6 && sf_.moment().day() != 7){
