@@ -1,11 +1,6 @@
-#!/app/vendor/node/bin/node
 
-
-console.log("hourly_general_slack 1");
 var all_bg_tasks = require('../background/includes_all_bg.js');
-console.log("hourly_general_slack 2");
 var sf_ = require('../includes_sf_.js');
-console.log("hourly_general_slack 3");
 
 function hourly_general_slack() {
 
