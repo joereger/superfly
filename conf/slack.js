@@ -1,4 +1,4 @@
-//node-slack config... using two separate webhook integrations on the Slack side
+//node-slack config... using two separate webhook integrations on the Slack side (all dead keys)
 var token_inbound_from_slack_general = 'T2kiFFhCfuaYSfNgIteabbs8';
 var token_inbound_from_slack_devs = 'mX7D1P6cFvNcUWRyIlE75Ytl';
 var token_inbound_from_slack_coaching = 'NdVDvdc5jfn1RAku16Mokqks';
